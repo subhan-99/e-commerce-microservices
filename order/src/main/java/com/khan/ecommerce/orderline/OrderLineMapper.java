@@ -2,7 +2,6 @@ package com.khan.ecommerce.orderline;
 
 
 import com.khan.ecommerce.order.Order;
-import com.khan.ecommerce.order.OrderLineRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,5 +17,9 @@ public class OrderLineMapper {
                 )
                 .quantity(request.quantity())
                 .build();
+    }
+
+    public OrderLineResponse toOrderLineResponse(OrderLine orderLine) {
+        return new OrderLineResponse(orderLine.getId(), orderLine.getQuantity());
     }
 }

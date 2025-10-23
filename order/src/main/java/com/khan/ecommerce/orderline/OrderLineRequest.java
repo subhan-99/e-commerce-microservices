@@ -1,7 +1,4 @@
-package com.khan.ecommerce.order;
-
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
+package com.khan.ecommerce.orderline;
 
 public record OrderLineRequest(
         Integer id,
