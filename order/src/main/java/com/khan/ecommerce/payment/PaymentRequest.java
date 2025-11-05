@@ -5,7 +5,7 @@ import com.khan.ecommerce.order.PaymentMethod;
 
 import java.math.BigDecimal;
 
-public record paymentRequest(
+public record PaymentRequest(
         BigDecimal amount,
 
         PaymentMethod paymentMethod,

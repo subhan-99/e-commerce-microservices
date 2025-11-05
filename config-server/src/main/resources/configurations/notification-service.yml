@@ -1,24 +1,25 @@
- server:
-   port:8040
+server:
+  port: 8040
 
-
- spring:
+spring:
   data:
     mongodb:
       host: localhost
       port: 27017
       database: customer
       authentication-database: admin
+
   kafka:
     consumer:
       bootstrap-servers: localhost:9092
-      group-id: paymentGroup, orderGroup
+      group-id: orderGroup
       auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringSerializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonSerializer
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
-        spring.json.trusted.packages: '*'
-        spring.json.type.mapping: orderConfirmation:com.khan.ecommerce.kafka.OrderConfirmation
+        spring.json.trusted.packages: "com.khan.ecommerce.*"
+        spring.json.type.mapping: orderConfirmation:com.khan.ecommerce.kafka.order.OrderConfirmation
+
   mail:
     host: localhost
     port: 1025
@@ -28,9 +29,9 @@
       mail:
         smtp:
           trust: "*"
-        auth: true
-        starttls:
-          enabled: true
+          auth: true
+          starttls:
+            enable: true
         connectiontimeout: 5000
         timeout: 3000
         writetimeout: 5000
